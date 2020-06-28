@@ -286,14 +286,15 @@ export default {
     getTableList() {
       this.dataListLoading = true;
       this.$http({
-        url: this.$http.adornUrl("/table/info/list"),
+        url: this.$http.adornUrl("/table/list"),
         method: "get",
         params: this.$http.adornParams({})
       }).then(({ data }) => {
         if (data && data.code === 0) {
           //this.dataList = data.page.list;
           //this.totalPage = data.page.totalCount;
-          this.tableOptions = data.page.list;
+          //this.tableOptions = data.page.list;
+          this.tableOptions = data.data;
           this.dataForm.tableName = this.tableOptions[0].tableName;
           this.tableSelectChange();
           //this.tableInfo = this.tableOptions[0];
@@ -308,14 +309,14 @@ export default {
     getTableInfo() {
       this.dataListLoading = true;
       this.$http({
-        url: this.$http.adornUrl("/table/info/" + this.dataForm.tableName),
+        url: this.$http.adornUrl("/table/" + this.dataForm.tableName),
         method: "get",
         params: this.$http.adornParams({})
       }).then(({ data }) => {
         if (data && data.code === 0) {
           //this.dataList = data.page.list;
           //this.totalPage = data.page.totalCount;
-          this.tableInfo = data.tableInfo;
+          this.tableInfo = data.data;
         } else {
           //this.dataList = [];
           //this.totalPage = 0;
@@ -328,7 +329,7 @@ export default {
       this.dataListLoading = true;
       this.$http({
         url: this.$http.adornUrl(
-          "/table/field/list/" + this.dataForm.tableName
+          "/table/" + this.dataForm.tableName
         ),
         method: "get",
         params: this.$http.adornParams({
@@ -338,8 +339,8 @@ export default {
         })
       }).then(({ data }) => {
         if (data && data.code === 0) {
-          this.dataList = data.page.list;
-          this.totalPage = data.page.totalCount;
+          this.dataList = data.data.columnList;
+          this.totalPage = data.data.columnList.length;
         } else {
           this.dataList = [];
           this.totalPage = 0;

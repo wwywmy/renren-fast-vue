@@ -223,10 +223,9 @@
       <el-table-column fixed="right" header-align="center" align="center" width="100" label="操作">
         <template slot-scope="scope">
           <el-button
-            v-if="isAuth('sys:user:update')"
             type="text"
             size="small"
-            @click="addOrUpdateHandle(scope.row.tableName,scope.row.columnName)"
+            @click="addOrUpdateHandle(scope.row)"
           >修改</el-button>
         </template>
       </el-table-column>
@@ -377,13 +376,11 @@ export default {
       this.dataListSelections = val;
     },
     // 新增 / 修改
-    addOrUpdateHandle(tableName,columnName) {
+    addOrUpdateHandle(row) {
       this.addOrUpdateVisible = true;
-      console.log(this.addOrUpdateVisible);
       this.$nextTick(() => {
-        this.$refs.addOrUpdate.init(tableName,columnName);
+        this.$refs.addOrUpdate.init(row);
       });
-      console.log(columnName);
     }
   }
 };

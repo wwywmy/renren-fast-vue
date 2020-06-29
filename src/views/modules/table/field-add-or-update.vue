@@ -14,173 +14,301 @@
     >
       <el-tabs tab-position="left">
         <el-tab-pane label="代码">
-          <el-form-item label="propertyName" prop="propertyName">
-            <el-input v-model="dataForm.propertyName"></el-input>
-          </el-form-item>
-          <el-form-item label="propertyType" prop="propertyType">
-            <el-select v-model="dataForm.propertyType" placeholder>
-              <el-option
-                v-for="item in propertyTypeOptions"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="propertyComment" prop="propertyComment">
-            <el-input v-model="dataForm.propertyComment"></el-input>
-          </el-form-item>
-          <el-form-item label="propertySelect" prop="propertySelect">
-            <el-switch
-              v-model="dataForm.propertySelect"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-            ></el-switch>
-          </el-form-item>
-          <el-form-item
-            label="propertyOptionList"
-            prop="propertyOptionList"
-            :v-if="dataForm.propertySelect"
-          >
-            <el-input v-model="dataForm.propertyOptionList" :disabled="true"></el-input>
-          </el-form-item>          
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="propertyName" prop="propertyName">
+                <el-input v-model="dataForm.propertyName"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="propertyType" prop="propertyType">
+                <el-select v-model="dataForm.propertyType" placeholder>
+                  <el-option
+                    v-for="item in propertyTypeOptions"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                  ></el-option>
+                </el-select>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="24">
+              <el-form-item label="propertyComment" prop="propertyComment">
+                <el-input v-model="dataForm.propertyComment"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="propertySelect" prop="propertySelect">
+                <el-switch
+                  v-model="dataForm.propertySelect"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949"
+                ></el-switch>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item
+                label="propertyOptionList"
+                prop="propertyOptionList"
+                v-if="dataForm.propertySelect"
+              >
+                <el-input v-model="dataForm.propertyOptionList" :disabled="true"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
         </el-tab-pane>
         <el-tab-pane label="配置">
-          <el-form-item label="queryable" prop="queryable">
-            <el-switch
-              v-model="dataForm.queryable"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-            ></el-switch>
-          </el-form-item>
-          <el-form-item label="likeable" prop="likeable">
-            <el-switch
-              v-model="dataForm.likeable"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-            ></el-switch>
-          </el-form-item>
-          <el-form-item label="addable" prop="addable">
-            <el-switch
-              v-model="dataForm.addable"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-            ></el-switch>
-          </el-form-item>
-          <el-form-item label="updatable" prop="updatable">
-            <el-switch
-              v-model="dataForm.updatable"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-            ></el-switch>
-          </el-form-item>
-          <el-form-item label="selectable" prop="selectable">
-            <el-switch
-              v-model="dataForm.selectable"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-            ></el-switch>
-          </el-form-item>
-          <el-form-item label="addableOrUpdatable" prop="addableOrUpdatable">
-            <el-switch
-              v-model="dataForm.addableOrUpdatable"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-            ></el-switch>
-          </el-form-item>
-          <el-form-item label="defaultAddValue" prop="defaultAddValue">
-            <el-input v-model="dataForm.defaultAddValue" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item label="defaultUpdateValue" prop="defaultUpdateValue">
-            <el-input v-model="dataForm.defaultUpdateValue" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item label="singleUpdatable" prop="singleUpdatable">
-            <el-switch
-              v-model="dataForm.singleUpdatable"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-            ></el-switch>
-          </el-form-item>
-          <el-form-item label="batchUpdatable" prop="batchUpdatable">
-            <el-switch
-              v-model="dataForm.batchUpdatable"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-            ></el-switch>
-          </el-form-item>
-          <el-form-item label="viewable" prop="viewable">
-            <el-switch
-              v-model="dataForm.viewable"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-            ></el-switch>
-          </el-form-item>
-          <el-form-item label="detailable" prop="detailable">
-            <el-switch
-              v-model="dataForm.detailable"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-            ></el-switch>
-          </el-form-item>
-          <el-form-item label="ynSelectable" prop="ynSelectable">
-            <el-switch
-              v-model="dataForm.ynSelectable"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-            ></el-switch>
-          </el-form-item>
-          <el-form-item label="refEntityName" prop="refEntityName">
-            <el-input v-model="dataForm.refEntityName" ></el-input>
-          </el-form-item>
+          <el-row>
+            <el-col :span="6">
+              <el-form-item label="queryable" prop="queryable">
+                <el-switch
+                  v-model="dataForm.queryable"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949"
+                ></el-switch>
+              </el-form-item>
+            </el-col>
+            <el-col :span="6">
+              <el-form-item label="likeable" prop="likeable">
+                <el-switch
+                  v-model="dataForm.likeable"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949"
+                ></el-switch>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="6">
+              <el-form-item label="addable" prop="addable">
+                <el-switch
+                  v-model="dataForm.addable"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949"
+                ></el-switch>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="defaultAddValue" prop="defaultAddValue">
+                <el-input v-model="dataForm.defaultAddValue" :disabled="true"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="6">
+              <el-form-item label="updatable" prop="updatable">
+                <el-switch
+                  v-model="dataForm.updatable"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949"
+                ></el-switch>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="defaultUpdateValue" prop="defaultUpdateValue">
+                <el-input v-model="dataForm.defaultUpdateValue" :disabled="true"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="6">
+              <el-form-item label="singleUpdatable" prop="singleUpdatable">
+                <el-switch
+                  v-model="dataForm.singleUpdatable"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949"
+                ></el-switch>
+              </el-form-item>
+            </el-col>
+            <el-col :span="6">
+              <el-form-item label="batchUpdatable" prop="batchUpdatable">
+                <el-switch
+                  v-model="dataForm.batchUpdatable"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949"
+                ></el-switch>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="6">
+              <el-form-item label="addableOrUpdatable" prop="addableOrUpdatable">
+                <el-switch
+                  v-model="dataForm.addableOrUpdatable"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949"
+                ></el-switch>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="6">
+              <el-form-item label="selectable" prop="selectable">
+                <el-switch
+                  v-model="dataForm.selectable"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949"
+                ></el-switch>
+              </el-form-item>
+            </el-col>
+            <el-col :span="6">
+              <el-form-item label="ynSelectable" prop="ynSelectable">
+                <el-switch
+                  v-model="dataForm.ynSelectable"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949"
+                ></el-switch>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="6">
+              <el-form-item label="viewable" prop="viewable">
+                <el-switch
+                  v-model="dataForm.viewable"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949"
+                ></el-switch>
+              </el-form-item>
+            </el-col>
+            <el-col :span="6">
+              <el-form-item label="detailable" prop="detailable">
+                <el-switch
+                  v-model="dataForm.detailable"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949"
+                ></el-switch>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="refEntityName" prop="refEntityName">
+                <el-input v-model="dataForm.refEntityName"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
         </el-tab-pane>
         <el-tab-pane label="Grid显示">
-          <el-form-item label="gridWidthAuto" prop="gridWidthAuto">
-            <el-input v-model="dataForm.gridWidthAuto" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item label="gridWidth" prop="gridWidth">
-            <el-input v-model="dataForm.gridWidth" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item label="gridAlign" prop="gridAlign">
-            <el-input v-model="dataForm.gridAlign" :disabled="true"></el-input>
-          </el-form-item>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="gridWidthAuto" prop="gridWidthAuto">
+                <el-switch
+                  v-model="dataForm.gridWidthAuto"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949"
+                ></el-switch>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="gridWidth" prop="gridWidth">
+                <el-input-number v-model="dataForm.gridWidth" :min="0" :max="1000"></el-input-number>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="gridAlign" prop="gridAlign">
+                <el-select v-model="dataForm.gridAlign" placeholder>
+                  <el-option
+                    v-for="item in gridAlignTypeOptions"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                  ></el-option>
+                </el-select>
+              </el-form-item>
+            </el-col>
+          </el-row>
         </el-tab-pane>
         <el-tab-pane label="数据库">
-          <el-form-item label="tableSchema" prop="tableSchema">
-            <el-input v-model="dataForm.tableSchema" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item label="tableName" prop="tableName">
-            <el-input v-model="dataForm.tableName" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item label="columnName" prop="columnName">
-            <el-input v-model="dataForm.columnName" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item label="isNullable" prop="isNullable">
-            <el-input v-model="dataForm.isNullable" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item label="dataType" prop="dataType">
-            <el-input v-model="dataForm.dataType" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item label="characterMaximumLength" prop="characterMaximumLength">
-            <el-input v-model="dataForm.characterMaximumLength" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item label="characterOctetLength" prop="characterOctetLength">
-            <el-input v-model="dataForm.characterOctetLength" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item label="numericPrecision" prop="numericPrecision">
-            <el-input v-model="dataForm.numericPrecision" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item label="numericScale" prop="numericScale">
-            <el-input v-model="dataForm.numericScale" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item label="columnKey" prop="columnKey">
-            <el-input v-model="dataForm.columnKey" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item label="extra" prop="extra">
-            <el-input v-model="dataForm.extra" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item label="columnComment" prop="columnComment">
-            <el-input v-model="dataForm.columnComment" :disabled="true"></el-input>
-          </el-form-item>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="tableSchema" prop="tableSchema">
+                <el-input v-model="dataForm.tableSchema" :disabled="true"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="tableName" prop="tableName">
+                <el-input v-model="dataForm.tableName" :disabled="true"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="columnName" prop="columnName">
+                <el-input v-model="dataForm.columnName" :disabled="true"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="isNullable" prop="isNullable">
+                <el-switch
+                  v-model="dataForm.isNullable"
+                  active-value="YES"
+                  inactive-value="NO"
+                  active-color="#13ce66"
+                  inactive-color="#ff4949"
+                  :disabled="true"
+                ></el-switch>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="dataType" prop="dataType">
+                <el-input v-model="dataForm.dataType" :disabled="true"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="characterMaximumLength" prop="characterMaximumLength">
+                <el-input v-model="dataForm.characterMaximumLength" :disabled="true"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="characterOctetLength" prop="characterOctetLength">
+                <el-input v-model="dataForm.characterOctetLength" :disabled="true"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="numericPrecision" prop="numericPrecision">
+                <el-input v-model="dataForm.numericPrecision" :disabled="true"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="numericScale" prop="numericScale">
+                <el-input v-model="dataForm.numericScale" :disabled="true"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="columnKey" prop="columnKey">
+                <el-input v-model="dataForm.columnKey" :disabled="true"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="extra" prop="extra">
+                <el-input v-model="dataForm.extra" :disabled="true"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="24">
+              <el-form-item label="columnComment" prop="columnComment">
+                <el-input v-model="dataForm.columnComment" :disabled="true"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
         </el-tab-pane>
       </el-tabs>
     </el-form>
@@ -209,6 +337,11 @@ export default {
         { value: "Date", label: "Date" },
         { value: "Time", label: "Time" }
       ],
+      gridAlignTypeOptions: [
+        { value: "left", label: "left" },
+        { value: "center", label: "center" },
+        { value: "right", label: "right" }
+      ],
       visible: false,
       roleList: [],
       dataForm: {},
@@ -230,10 +363,11 @@ export default {
         if (valid) {
           this.$http({
             url: this.$http.adornUrl(
-              `/sys/user/${!this.dataForm.columnName ? "save" : "update"}`
+              //`/sys/user/${!this.dataForm.columnName ? "save" : "update"}`
+              '/table/'+this.dataForm.tableName+'/'+this.dataForm.columnName
             ),
             method: "post",
-            data: this.$http.adornData({})
+            data: this.$http.adornData(this.dataForm)
           }).then(({ data }) => {
             if (data && data.code === 0) {
               this.$message({

@@ -1,180 +1,220 @@
 <template>
   <div class="mod-user">
-    <el-form :inline="true" :model="dataForm">
-      <el-form-item>
-        <el-select v-model="dataForm.tableName" placeholder="表名" @change="tableSelectChange()">
-          <el-option
-            v-for="item in tableOptions"
-            :key="item.tableName"
-            :label="item.tableName"
-            :value="item.tableName"
-          ></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="tableName">
-        <el-input v-model="tableInfo.tableShortName" :disabled="true"></el-input>
-      </el-form-item>
-      <el-form-item label="entityName">
-        <el-input v-model="tableInfo.entityName" :disabled="true"></el-input>
-      </el-form-item>
-      <el-form-item label="restSegment">
-        <el-input v-model="tableInfo.restSegment" :disabled="true"></el-input>
-      </el-form-item>
-      <el-form-item label="isIncludeBigDecimal">
-        <el-switch
-          v-model="tableInfo.includeBigDecimal"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      <el-form-item label="isIncludeLong">
-        <el-switch
-          v-model="tableInfo.includeLong"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      <el-form-item label="isIncludeDate">
-        <el-switch
-          v-model="tableInfo.includeDate"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      <el-form-item label="isIncludeStatus">
-        <el-switch
-          v-model="tableInfo.includeStatus"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      <el-form-item label="isIncludeCompanyShortName">
-        <el-switch
-          v-model="tableInfo.includeCompanyShortName"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      <el-form-item label="isIncludeTenantId">
-        <el-switch
-          v-model="tableInfo.includeTenantId"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      <el-form-item label="isIncludeTenantOne2One">
-        <el-switch
-          v-model="tableInfo.includeTenantOne2One"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      <el-form-item label="isIncludeTenantOne2Many">
-        <el-switch
-          v-model="tableInfo.includeTenantOne2Many"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      <el-form-item label="isIncludeSysId">
-        <el-switch
-          v-model="tableInfo.includeSysId"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      <el-form-item label="isIncludeSysOne2One">
-        <el-switch
-          v-model="tableInfo.includeSysOne2One"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      <el-form-item label="isIncludeSysOne2Many">
-        <el-switch
-          v-model="tableInfo.includeSysOne2Many"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      <el-form-item label="isIncludeModuleId">
-        <el-switch
-          v-model="tableInfo.includeModuleId"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      <el-form-item label="isIncludeModuleOne2One">
-        <el-switch
-          v-model="tableInfo.includeModuleOne2One"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      <el-form-item label="isIncludeModuleOne2Many">
-        <el-switch
-          v-model="tableInfo.includeModuleOne2Many"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-
-      <el-form-item label="isIncludeSingleUpdatable">
-        <el-switch
-          v-model="tableInfo.includeSingleUpdatable"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      <el-form-item label="isIncludeBatchUpdatable">
-        <el-switch
-          v-model="tableInfo.includeBatchUpdatable"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-
-      <el-form-item label="isIncludeNotNullabe">
-        <el-switch
-          v-model="tableInfo.includeNotNullabe"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      <el-form-item label="isIncludeParentId">
-        <el-switch
-          v-model="tableInfo.includeParentId"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      <el-form-item label="isIncludeAggregation">
-        <el-switch
-          v-model="tableInfo.includeAggregation"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
-          disabled
-        ></el-switch>
-      </el-form-item>
-      
+    <el-form :model="dataForm" label-width="160px" label-position="right">
+      <el-row>
+        <el-col :span="6">
+          <el-form-item label="tableName">
+            <el-select v-model="dataForm.tableName" placeholder="表名" @change="tableSelectChange()">
+              <el-option
+                v-for="item in tableOptions"
+                :key="item.tableName"
+                :label="item.tableName"
+                :value="item.tableName"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item label="tableShortName">
+            <el-input v-model="tableInfo.tableShortName" :disabled="true"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item label="tablePrefix">
+            <el-input v-model="tableInfo.tablePrefix" :disabled="true"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item label="tableComment">
+            <el-input v-model="tableInfo.tableComment" :disabled="true"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="6">
+          <el-form-item label="entityName">
+            <el-input v-model="tableInfo.entityName" :disabled="true"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item label="restSegment">
+            <el-input v-model="tableInfo.restSegment" :disabled="true"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="3">
+          <el-form-item label="BigDecimal">
+            <el-switch
+              v-model="tableInfo.includeBigDecimal"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            ></el-switch>
+          </el-form-item>
+        </el-col>
+        <el-col :span="3">
+          <el-form-item label="Long">
+            <el-switch
+              v-model="tableInfo.includeLong"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            ></el-switch>
+          </el-form-item>
+        </el-col>
+        <el-col :span="3">
+          <el-form-item label="Date">
+            <el-switch
+              v-model="tableInfo.includeDate"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            ></el-switch>
+          </el-form-item>
+        </el-col>
+        <el-col :span="3">
+          <el-form-item label="Status">
+            <el-switch
+              v-model="tableInfo.includeStatus"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            ></el-switch>
+          </el-form-item>
+        </el-col>
+        <el-col :span="3">
+          <el-form-item label="CompanyShortName">
+            <el-switch
+              v-model="tableInfo.includeCompanyShortName"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            ></el-switch>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="3">
+          <el-form-item label="TenantId">
+            <el-switch
+              v-model="tableInfo.includeTenantId"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            ></el-switch>
+          </el-form-item>
+        </el-col>
+        <el-col :span="3">
+          <el-form-item label="TenantOne2One">
+            <el-switch
+              v-model="tableInfo.includeTenantOne2One"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            ></el-switch>
+          </el-form-item>
+        </el-col>
+        <el-col :span="3">
+          <el-form-item label="TenantOne2Many">
+            <el-switch
+              v-model="tableInfo.includeTenantOne2Many"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            ></el-switch>
+          </el-form-item>
+        </el-col>
+        <el-col :span="3">
+          <el-form-item label="ModuleId">
+            <el-switch
+              v-model="tableInfo.includeModuleId"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            ></el-switch>
+          </el-form-item>
+        </el-col>
+        <el-col :span="3">
+          <el-form-item label="ModuleOne2One">
+            <el-switch
+              v-model="tableInfo.includeModuleOne2One"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            ></el-switch>
+          </el-form-item>
+        </el-col>
+        <el-col :span="3">
+          <el-form-item label="ModuleOne2Many">
+            <el-switch
+              v-model="tableInfo.includeModuleOne2Many"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            ></el-switch>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="3">
+          <el-form-item label="SingleUpdatable">
+            <el-switch
+              v-model="tableInfo.includeSingleUpdatable"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            ></el-switch>
+          </el-form-item>
+        </el-col>
+        <el-col :span="3">
+          <el-form-item label="BatchUpdatable">
+            <el-switch
+              v-model="tableInfo.includeBatchUpdatable"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            ></el-switch>
+          </el-form-item>
+        </el-col>
+        <el-col :span="3">
+          <el-form-item label="NotNullabe">
+            <el-switch
+              v-model="tableInfo.includeNotNullabe"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            ></el-switch>
+          </el-form-item>
+        </el-col>
+        <el-col :span="3">
+          <el-form-item label="ParentId">
+            <el-switch
+              v-model="tableInfo.includeParentId"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            ></el-switch>
+          </el-form-item>
+        </el-col>
+        <el-col :span="3">
+          <el-form-item label="Aggregation">
+            <el-switch
+              v-model="tableInfo.includeAggregation"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              disabled
+            ></el-switch>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="24">
+          <el-form-item>
+            <el-button @click="create()">生成</el-button>
+          </el-form-item>
+        </el-col>
+      </el-row>
     </el-form>
     <el-table
       :data="dataList"
@@ -222,11 +262,7 @@
       <el-table-column prop="columnComment" header-align="center" width="320" label="columnComment"></el-table-column>
       <el-table-column fixed="right" header-align="center" align="center" width="100" label="操作">
         <template slot-scope="scope">
-          <el-button
-            type="text"
-            size="small"
-            @click="addOrUpdateHandle(scope.row)"
-          >修改</el-button>
+          <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row)">修改</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -327,9 +363,7 @@ export default {
     getDataList() {
       this.dataListLoading = true;
       this.$http({
-        url: this.$http.adornUrl(
-          "/table/" + this.dataForm.tableName
-        ),
+        url: this.$http.adornUrl("/table/" + this.dataForm.tableName),
         method: "get",
         params: this.$http.adornParams({
           page: this.pageIndex,
@@ -380,6 +414,30 @@ export default {
       this.addOrUpdateVisible = true;
       this.$nextTick(() => {
         this.$refs.addOrUpdate.init(row);
+      });
+    },
+    create() {
+      this.dataListLoading = true;
+      this.$http({
+        url: this.$http.adornUrl("/table/create/" + this.dataForm.tableName),
+        method: "post",
+        params: this.$http.adornParams({})
+      }).then(({ data }) => {
+        if (data && data.code === 0) {
+          //this.dataList = data.data.columnList;
+          //this.totalPage = data.data.columnList.length;
+          this.$message({
+            message: "操作成功",
+            type: "success",
+            duration: 1500,
+            onClose: () => {}
+          });
+        } else {
+          //this.dataList = [];
+          //this.totalPage = 0;
+          this.$message.error(data.msg);
+        }
+        this.dataListLoading = false;
       });
     }
   }

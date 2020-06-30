@@ -390,6 +390,10 @@ export default {
         cellValue === "tinyint"
       ) {
         return cellValue + "(" + (row.numericPrecision + 1) + ")";
+      } else if (cellValue === "decimal") {
+        return (
+          cellValue + "(" + row.numericPrecision + "," + row.numericScale + ")"
+        );
       }
 
       return cellValue;
